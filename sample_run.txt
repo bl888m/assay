@@ -1,0 +1,186 @@
+$ assay desk
+
+====================================================================
+  THE DESK
+--------------------------------------------------------------------
+  Rigo  Scout      pulls the universe of open markets
+  Holt  Research   adds context to a market; the only one that can call a model
+  Ilsa  Analyst    estimates the true probability from the crowd price
+  Kett  Trader     picks the side and sizes it by Kelly
+  Bram  Risk       refuses most of it, and names the rule
+  Tess  Portfolio  owns the paper book and settles it
+--------------------------------------------------------------------
+  not chatbots. six small modules you can read and test.
+  only Holt can call a model, and only when you ask.
+====================================================================
+
+
+$ assay scan --seed 7
+
+====================================================================
+  ASSAY v0.2   desk: 6 agents   source: sim        Holt:off
+  markets: 12    bankroll: $10,000
+====================================================================
+  [Tech    ] Will Frost IPO in 2027?
+      price 80.9%  Ilsa 86.4%   edge YES +5.5%
+      liq $  12,468  vol $  11,666     4h
+      why  reca +3.7%  mome +1.8%
+      Kett YES edge +5.5%      Bram PASS  resolves in 4h < 6h
+
+  [Tech    ] Will Umbra IPO in 2026?
+      price 80.2%  Ilsa 85.7%   edge YES +5.5%
+      liq $  10,592  vol $  31,321    88h
+      why  reca +3.7%  mome +1.8%
+      Kett YES $500.00  f* 6.9%      Bram FIRE
+
+  [Politics] Government shutdown before Aug?
+      price 93.0%  Ilsa 97.4%   edge YES +4.4%
+      liq $  54,930  vol $ 158,948     7h
+      why  reca +2.5%  mome +1.9%
+      Kett YES $500.00  f* 15.9%      Bram FIRE
+
+  [Crypto  ] Will a spot Vesper ETF be approved in 2027?
+      price 69.7%  Ilsa 73.8%   edge YES +4.1%
+      liq $   1,871  vol $   1,321   380h
+      why  reca +3.1%  mome +1.0%
+      Kett YES edge +4.1%      Bram PASS  liquidity $1,871 < $5,000
+
+  [Weather ] Will a named storm hit Juno in Jun?
+      price 85.7%  Ilsa 88.8%   edge YES +3.1%
+      liq $  23,990  vol $  39,569    57h
+      why  reca +3.5%  mome -0.4%
+      Kett YES edge +3.1%      Bram PASS  edge 3.1% < 4% floor
+
+  [Sports  ] Over 100.5 goals in Corvi vs Ember?
+      price 87.8%  Ilsa 90.2%   edge YES +2.4%
+      liq $   6,527  vol $   7,961     4h
+      why  reca +3.3%  mome -0.9%
+      Kett YES edge +2.4%      Bram PASS  edge 2.4% < 4% floor
+
+  [Sports  ] Over 90.5 goals in Nox vs Wren?
+      price 38.5%  Ilsa 40.5%   edge YES +2.0%
+      liq $   1,318  vol $   2,096    17h
+      why  reca -2.0%  mome +4.0%
+      Kett YES edge +2.0%      Bram PASS  edge 2.0% < 4% floor
+
+  [Politics] Will Quill be confirmed before Apr?
+      price 96.6%  Ilsa 98.5%   edge YES +1.9%
+      liq $   1,452  vol $   2,771     6h
+      why  reca +1.5%  mome +0.4%
+      Kett YES edge +1.9%      Bram PASS  edge 1.9% < 4% floor
+
+  [Tech    ] Will Lumen IPO in 2027?
+      price 95.5%  Ilsa 96.5%   edge YES +1.0%
+      liq $  25,131  vol $  45,694   905h
+      why  reca +1.8%  mome -0.9%
+      Kett YES edge +1.0%      Bram PASS  edge 1.0% < 4% floor
+
+  [Sports  ] Will Nox reach the final?
+      price  3.0%  Ilsa  2.1%   edge NO +0.9%
+      liq $   4,491  vol $   1,642   252h
+      why  reca -1.4%  mome +0.5%
+      Kett NO edge +0.9%      Bram PASS  edge 0.9% < 4% floor
+
+  [Crypto  ] Will ETH flip $10000 by Dec?
+      price  3.0%  Ilsa  2.1%   edge NO +0.9%
+      liq $  11,776  vol $  28,548   881h
+      why  reca -1.4%  mome +0.5%
+      Kett NO edge +0.9%      Bram PASS  edge 0.9% < 4% floor
+
+  [Econ    ] CPI above 3% for May?
+      price 34.2%  Ilsa 30.6%   edge NO +3.5%
+      liq $   3,103  vol $     856   302h
+      why  reca -2.6%  mome -0.9%
+      Kett NO edge +3.5%      Bram PASS  edge 3.5% < 4% floor
+
+
+
+$ assay paper --settle --seed 42
+
+====================================================================
+  ASSAY v0.2   desk: 6 agents   source: sim        Holt:off
+  markets: 12    bankroll: $10,000
+====================================================================
+  [Weather ] Will a named storm hit Atlas in Apr?
+      price 80.2%  Ilsa 86.8%   edge YES +6.6%
+      liq $  24,873  vol $  20,327   296h
+      why  reca +3.7%  mome +2.9%
+      Kett YES $500.00  f* 8.3%      Bram FIRE
+
+  [Culture ] Will Gale win Best Picture?
+      price 74.4%  Ilsa 79.7%   edge YES +5.3%
+      liq $  12,241  vol $  34,060     6h
+      why  reca +3.5%  mome +1.8%
+      Kett YES $500.00  f* 5.2%      Bram FIRE
+
+  [Weather ] Will a named storm hit Koda in Nov?
+      price 90.1%  Ilsa 93.5%   edge YES +3.4%
+      liq $  15,805  vol $  34,486     5h
+      why  reca +3.0%  mome +0.4%
+      Kett YES edge +3.4%      Bram PASS  edge 3.4% < 4% floor
+
+  [Econ    ] CPI above 100% for Sep?
+      price 70.8%  Ilsa 73.0%   edge YES +2.2%
+      liq $  10,664  vol $  30,613   584h
+      why  reca +3.2%  mome -0.9%
+      Kett YES edge +2.2%      Bram PASS  edge 2.2% < 4% floor
+
+  [Weather ] Warmest Mar on record for Frost?
+      price 61.9%  Ilsa 63.9%   edge YES +2.0%
+      liq $   1,850  vol $   4,473   129h
+      why  reca +2.0%  mome -0.1%
+      Kett YES edge +2.0%      Bram PASS  edge 2.0% < 4% floor
+
+  [Weather ] Will a named storm hit Wren in Nov?
+      price 21.4%  Ilsa 20.3%   edge NO +1.1%
+      liq $  10,891  vol $   9,796     6h
+      why  reca -3.7%  mome +2.5%
+      Kett NO edge +1.1%      Bram PASS  edge 1.1% < 4% floor
+
+  [Crypto  ] Will ETH flip $12000 by Nov?
+      price  3.0%  Ilsa  2.1%   edge NO +0.9%
+      liq $  20,940  vol $  16,655   110h
+      why  reca -1.4%  mome +0.5%
+      Kett NO edge +0.9%      Bram PASS  edge 0.9% < 4% floor
+
+  [Culture ] Will Ives debut at number one?
+      price 97.0%  Ilsa 97.9%   edge YES +0.9%
+      liq $  15,256  vol $  44,246   434h
+      why  reca +1.4%  mome -0.5%
+      Kett YES edge +0.9%      Bram PASS  edge 0.9% < 4% floor
+
+  [Culture ] Will Corvi win Best Picture?
+      price 41.1%  Ilsa 40.4%   edge NO +0.7%
+      liq $  35,725  vol $  49,458  1005h
+      why  reca -1.6%  mome +0.9%
+      Kett NO edge +0.7%      Bram PASS  edge 0.7% < 4% floor
+
+  [Politics] Will Delphi be confirmed before Apr?
+      price 43.9%  Ilsa 43.3%   edge NO +0.6%
+      liq $   1,415  vol $   1,687   117h
+      why  reca -1.1%  mome +0.4%
+      Kett NO edge +0.6%      Bram PASS  edge 0.6% < 4% floor
+
+  [Tech    ] Will Rune ship Ember before Nov?
+      price 60.8%  Ilsa 61.0%   edge YES +0.2%
+      liq $  95,715  vol $ 150,090     8h
+      why  reca +1.9%  mome -1.7%
+      Kett YES edge +0.2%      Bram PASS  edge 0.2% < 4% floor
+
+  [Culture ] Will Tycho debut at number one?
+      price 93.2%  Ilsa 93.2%   edge YES +0.0%
+      liq $  19,399  vol $  38,370   426h
+      why  reca +2.4%  mome -2.4%
+      Kett YES edge +0.0%      Bram PASS  edge 0.0% < 4% floor
+
+  2 fired, 10 passed
+
+====================================================================
+  TESS / PORTFOLIO
+--------------------------------------------------------------------
+  equity     $ 10,295.48   (+2.95%)
+  cash       $ 10,295.48
+  exposure   $      0.00   (0 open)
+  realized   $   +295.48
+  open P&L   $     +0.00
+====================================================================

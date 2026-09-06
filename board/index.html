@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>assay · desk</title>
+<link rel="stylesheet" href="board.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="bar">
+    <div class="brand"><span class="pulse"></span> assay <span class="sep">·</span> desk</div>
+    <div class="meta">
+      <span id="src" class="tag">sim</span>
+      <span id="holt" class="tag">Holt off</span>
+      <span class="tag paper">paper</span>
+      <span id="clock" class="clock">--:--:--</span>
+    </div>
+  </header>
+
+  <section id="stats" class="stats"></section>
+
+  <div class="cols">
+    <section class="panel feed">
+      <div class="phead">
+        <span>feed</span>
+        <span class="controls">
+          <button id="f-all" class="fbtn on">all</button>
+          <button id="f-fire" class="fbtn">fire</button>
+        </span>
+      </div>
+      <table id="feedtable">
+        <thead>
+          <tr><th>market</th><th class="r">price</th><th class="r">Ilsa</th>
+              <th class="r">edge</th><th class="score">score</th><th>verdict</th></tr>
+        </thead>
+        <tbody id="feedbody"></tbody>
+      </table>
+    </section>
+
+    <aside class="side">
+      <section class="panel">
+        <div class="phead"><span>the desk</span><span class="muted">6 agents</span></div>
+        <ul id="desk" class="desk"></ul>
+      </section>
+      <section class="panel">
+        <div class="phead"><span>paper book</span><span id="bookret" class="muted"></span></div>
+        <ul id="book" class="book"></ul>
+        <div id="bookfoot" class="bookfoot"></div>
+      </section>
+    </aside>
+  </div>
+
+  <section id="rules" class="rules"></section>
+
+  <footer class="foot">
+    <span>receipts over hype · paper first · the resolution is the source</span>
+    <span id="gen" class="muted"></span>
+  </footer>
+</div>
+
+<script src="data.js"></script>
+<script src="board.js"></script>
+</body>
+</html>

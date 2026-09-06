@@ -1,0 +1,112 @@
+/* assay board. dark desk, acid-green accents. compatible CSS on purpose:
+   no CSS variables, no grid, no flex gap, so it renders the same in an old
+   webkit and a current browser. */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background: #0e0c07;
+  color: #e6e6da;
+  font-family: "DejaVu Sans Mono", ui-monospace, Menlo, Consolas, monospace;
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1200px; margin: 0 auto; padding: 18px; }
+
+.bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 16px; background: #15120b; border: 1px solid #2a261a;
+  border-radius: 10px;
+}
+.brand { font-weight: 700; letter-spacing: .5px; }
+.brand .sep { color: #6a6858; }
+.pulse {
+  display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+  background: #ccff00; margin-right: 6px; vertical-align: middle;
+}
+.meta .tag {
+  display: inline-block; padding: 3px 8px; margin-left: 6px;
+  background: #0e0c07; border: 1px solid #2a261a; border-radius: 6px;
+  color: #9a9a8c; font-size: 12px;
+}
+.meta .paper { color: #ffe700; border-color: #4a4413; }
+.clock { margin-left: 10px; color: #6a6858; font-size: 12px; }
+
+.stats { display: flex; margin: 14px 0; }
+.tile {
+  flex: 1; background: #15120b; border: 1px solid #2a261a; border-radius: 10px;
+  padding: 14px 16px; margin-right: 10px;
+}
+.tile:last-child { margin-right: 0; }
+.tile .n { font-size: 26px; font-weight: 700; color: #e6e6da; }
+.tile .n.green { color: #ccff00; }
+.tile .n.red { color: #e8604e; }
+.tile .l { font-size: 11px; color: #6a6858; margin-top: 4px; letter-spacing: .4px; }
+
+.cols { display: flex; align-items: flex-start; }
+.feed { flex: 1; margin-right: 12px; }
+.side { width: 360px; }
+
+.panel {
+  background: #15120b; border: 1px solid #2a261a; border-radius: 10px;
+  margin-bottom: 12px; overflow: hidden;
+}
+.phead {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 14px; border-bottom: 1px solid #2a261a; color: #cfcfc2;
+  font-weight: 700;
+}
+.phead .muted, .muted { color: #6a6858; font-weight: 400; }
+.controls .fbtn {
+  background: #0e0c07; color: #9a9a8c; border: 1px solid #2a261a;
+  border-radius: 6px; padding: 2px 10px; margin-left: 6px; cursor: pointer;
+  font-family: inherit; font-size: 12px;
+}
+.controls .fbtn.on { background: #ccff00; color: #14120a; border-color: #ccff00; font-weight: 700; }
+
+table { width: 100%; border-collapse: collapse; }
+thead th {
+  text-align: left; font-weight: 400; color: #6a6858; font-size: 11px;
+  padding: 8px 14px; border-bottom: 1px solid #2a261a;
+}
+th.r, td.r { text-align: right; }
+th.score { width: 130px; }
+tbody td { padding: 10px 14px; border-bottom: 1px solid #201d13; vertical-align: middle; }
+tbody tr:last-child td { border-bottom: none; }
+tbody tr.fire td { background: rgba(204,255,0,0.04); }
+tbody tr.fire { border-left: 3px solid #ccff00; }
+tbody tr.pass { border-left: 3px solid #2a261a; }
+.q { color: #e6e6da; }
+.cat { color: #6a6858; font-size: 11px; }
+.pos { color: #ccff00; } .neg { color: #e8604e; }
+.mono { color: #cfcfc2; }
+
+.bar-wrap { background: #0e0c07; border: 1px solid #2a261a; border-radius: 4px; height: 10px; width: 110px; overflow: hidden; }
+.bar-fill { height: 100%; background: #ccff00; }
+.bar-fill.dim { background: #4a4413; }
+
+.verd { font-weight: 700; }
+.verd.fire { color: #ccff00; }
+.verd.pass { color: #6a6858; }
+.why { color: #6a6858; font-size: 11px; }
+
+.desk { list-style: none; }
+.desk li { display: flex; align-items: center; padding: 9px 14px; border-bottom: 1px solid #201d13; }
+.desk li:last-child { border-bottom: none; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: #ccff00; margin-right: 10px; }
+.dot.idle { background: #4a4413; }
+.ag { width: 46px; color: #ccff00; font-weight: 700; }
+.role { width: 74px; color: #cfcfc2; }
+.stat { color: #6a6858; font-size: 11px; }
+
+.book { list-style: none; }
+.book li { display: flex; justify-content: space-between; padding: 9px 14px; border-bottom: 1px solid #201d13; }
+.book li:last-child { border-bottom: none; }
+.book .bq { color: #cfcfc2; }
+.bookfoot { padding: 10px 14px; color: #6a6858; border-top: 1px solid #2a261a; font-size: 12px; }
+
+.rules { display: flex; margin-top: 2px; }
+.rule { flex: 1; background: #15120b; border: 1px solid #2a261a; border-radius: 8px; padding: 10px 12px; margin-right: 8px; }
+.rule:last-child { margin-right: 0; }
+.rule .rv { color: #ccff00; font-weight: 700; }
+.rule .rl { color: #6a6858; font-size: 11px; margin-top: 2px; }
+
+.foot { display: flex; justify-content: space-between; color: #6a6858; font-size: 11px; margin-top: 14px; padding: 0 4px; }

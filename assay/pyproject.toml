@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "assay"
+version = "0.2.0"
+description = "an autonomous prediction-market paper fund. reads markets, estimates, sizes by Kelly, refuses most of them"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = []          # the core is stdlib only, on purpose
+
+[project.optional-dependencies]
+live = []                  # a live executor is deliberately not shipped here
+
+[project.scripts]
+assay = "assay.cli:main"
+
+[tool.setuptools]
+packages = ["assay", "assay.sources"]

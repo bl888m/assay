@@ -1,0 +1,6 @@
+# The core runs on the standard library alone. There is nothing to install
+# for `scan`, `paper`, `watch` or the tests.
+#
+# The only network path, `--source polymarket`, uses urllib from the stdlib
+# too, so this file stays empty by design. Keeping the dependency count at
+# zero is a feature: less to audit before you trust it with a key later.
