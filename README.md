@@ -29,6 +29,8 @@ paper by default, reproducible by default.
 It is not an AI that presses BUY. It is a desk of six agents, and most of
 what the desk does is decline.
 
+![assay running a scan](assets/demo.gif)
+
 ## The desk
 
 ![the desk](assets/shot_desk.png)
@@ -250,6 +252,15 @@ mode and the settle report exist.
 **Can I point it at Robinhood?** Yes. `--source robinhood` maps Robinhood
 event contracts into the same pipeline once you set `RH_API_BASE`. It still
 only reads, and never places an order.
+
+## Roadmap
+
+Shipped so far: the six-agent desk, the transparent estimate, Kelly sizing,
+the risk desk, the paper book with a settle report, the board view, the
+simulator and Polymarket sources, and the optional research agent. Next up:
+a live Robinhood Chain adapter, a Kalshi source, a historical backtest over
+real resolved markets, and opt-in alerts. Full list, including what assay
+will never do, in [ROADMAP.md](ROADMAP.md).
 
 ## Built on
 
