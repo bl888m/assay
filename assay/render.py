@@ -14,6 +14,15 @@ from .desk import DESK
 
 _W = 68
 
+WORDMARK = (
+    " █████╗ ███████╗███████╗ █████╗ ██╗   ██╗\n"
+    "██╔══██╗██╔════╝██╔════╝██╔══██╗╚██╗ ██╔╝\n"
+    "███████║███████╗███████╗███████║ ╚████╔╝ \n"
+    "██╔══██║╚════██║╚════██║██╔══██║  ╚██╔╝  \n"
+    "██║  ██║███████║███████║██║  ██║   ██║   \n"
+    "╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝   ╚═╝   "
+)
+
 
 def rule(ch: str = "-") -> str:
     return ch * _W
@@ -22,9 +31,12 @@ def rule(ch: str = "-") -> str:
 def header(source: str, n: int, bankroll: float, research: str = "off") -> str:
     r = "Holt:on" if research == "llm" else "Holt:off"
     return "\n".join([
+        "",
+        WORDMARK,
+        "  the six-agent desk for prediction markets  ·  paper by default",
         rule("="),
-        f"  ASSAY v0.2   desk: 6 agents   source: {source:<10} {r}",
-        f"  markets: {n:<3}   bankroll: ${bankroll:,.0f}",
+        f"  desk: 6 agents   source: {source:<10} {r}   "
+        f"markets: {n:<3}   bankroll: ${bankroll:,.0f}",
         rule("="),
     ])
 
