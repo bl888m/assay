@@ -105,3 +105,27 @@ def desk_roster() -> str:
     lines.append("  only Holt can call a model, and only when you ask.")
     lines.append(rule("="))
     return "\n".join(lines)
+
+
+def decisions_json(decisions):
+    """Machine-readable rows for `--json`: one dict per market decision."""
+    out = []
+    for d in decisions:
+        p = d.proposal
+        m = p.market
+        est = p.estimate
+        out.append({
+            "id": m.id,
+            "question": m.question,
+            "category": m.category,
+            "price": round(m.price, 4),
+            "estimate": round(est.q, 4),
+            "side": p.side,
+            "edge": round(p.edge, 4),
+            "kelly_fraction": round(p.kelly_fraction, 4),
+            "stake": round(p.stake, 2),
+            "verdict": d.verdict,
+            "reason": d.reason,
+            "components": est.components,
+        })
+    return out
