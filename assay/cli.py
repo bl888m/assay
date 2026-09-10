@@ -5,6 +5,7 @@
     assay paper             run the pipeline into a paper book
     assay paper --settle    ... then settle every position by ground truth
     assay watch             re-scan on an interval (useful with a live source)
+    assay scan --json       machine-readable rows for your own pipeline
 
 Paper by default. Simulator by default. Reproducible by default.
 Holt (the research agent) is off unless you pass --research llm.
@@ -13,6 +14,7 @@ Holt (the research agent) is off unless you pass --research llm.
 from __future__ import annotations
 
 import argparse
+import json
 import random
 import sys
 import time
@@ -67,7 +69,6 @@ def cmd_desk(a):
 def cmd_scan(a):
     markets = _load(a.source, a.n, a.seed)
     book = Book(starting_cash=a.bankroll, cash=a.bankroll)
-    print(render.header(a.source, len(markets), book.bankroll(), a.research))
     from . import model, edge, research
     from .risk import check
     scored = []
@@ -75,17 +76,29 @@ def cmd_scan(a):
         delta, note = research.research(m, a.research)
         est = model.estimate(m, delta, note or "")
         scored.append((est.q - m.price, m, est))
+    decisions = []
     for _, m, est in sorted(scored, key=lambda t: t[0], reverse=True):
         prop = edge.propose(m, est, book.bankroll())
-        d = check(prop, book, Limits(**_limit_kwargs(a)))
+        decisions.append(check(prop, book, Limits(**_limit_kwargs(a))))
+    if a.json:
+        print(json.dumps(render.decisions_json(decisions)))
+        return
+    print(render.header(a.source, len(markets), book.bankroll(), a.research))
+    for d in decisions:
         print(render.card(d))
         print()
 
 
 def cmd_paper(a):
     markets = _load(a.source, a.n, a.seed)
-    book = Book(starting_cash=a.bankroll, cash=a.bankroll)
     limits = Limits(**_limit_kwargs(a))
+    if a.json:
+        from . import snapshot
+        snap = snapshot.build(markets, limits, a.bankroll,
+                              a.source, a.research == "llm", a.seed)
+        print(json.dumps(snap))
+        return
+    book = Book(starting_cash=a.bankroll, cash=a.bankroll)
     _print_run(a, markets, book, limits)
     if a.settle:
         _settle(book, markets, a.seed)
@@ -153,11 +166,15 @@ def build_parser() -> argparse.ArgumentParser:
     d.set_defaults(func=cmd_desk)
 
     s = sub.add_parser("scan", help="score markets, fire nothing")
+    s.add_argument("--json", action="store_true",
+                   help="machine-readable output for your own pipeline")
     s.set_defaults(func=cmd_scan)
 
     pa = sub.add_parser("paper", help="run the pipeline into a paper book")
     pa.add_argument("--settle", action="store_true",
                     help="settle positions by ground truth (sim only)")
+    pa.add_argument("--json", action="store_true",
+                    help="machine-readable snapshot for your own pipeline")
     pa.set_defaults(func=cmd_paper)
 
     w = sub.add_parser("watch", help="re-scan on an interval")
