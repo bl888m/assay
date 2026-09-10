@@ -15,6 +15,8 @@
 ![mode](https://img.shields.io/badge/mode-paper%20by%20default-D9D9D9?style=flat-square&labelColor=110E08)
 ![license](https://img.shields.io/badge/license-MIT-FFE700?style=flat-square&labelColor=110E08)
 
+**$ASSAY** is live on Pons: `0x96d2b15b35f43e0113a362b6d522a27a6a9d2138` ([buy](https://www.ponsfamily.com/launchpad/0x96d2b15b35f43e0113a362b6d522a27a6a9d2138)). This repo is the desk behind it, open source and paper by default.
+
 Robinhood gave everyone the buy button. A real fund is the rest of the desk
 behind that button: someone who finds the markets, someone who estimates the
 real odds, someone who sizes the bet, someone whose whole job is to say no,
@@ -87,10 +89,11 @@ python -m assay desk                     # meet the six agents
 python -m assay scan                      # read markets, score them, fire nothing
 python -m assay paper --settle            # run the desk, settle by ground truth
 python -m assay board                     # render the desk as a local web page
+python -m assay scan --json                # machine-readable rows for your own pipeline
 python -m assay scan --source polymarket  # score live Polymarket markets
 python -m assay scan --source robinhood   # point Rigo at Robinhood event contracts
 python -m assay scan --research llm        # wake Holt up (needs ANTHROPIC_API_KEY)
-python tests.py                            # 22 checks, no network
+python tests.py                            # 23 checks, no network
 ```
 
 ---
@@ -211,7 +214,7 @@ trading.
 python tests.py
 ```
 
-Twenty-two checks, no network: the logit round trip, that recalibration pushes
+Twenty-three checks, no network: the logit round trip, that recalibration pushes
 favorites up and longshots down and leaves a coin flip alone, the momentum and
 research caps, the Kelly formula, that sizing picks the right side and refuses
 a zero edge, every risk refusal, that a winning YES pays out and a losing one

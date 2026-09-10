@@ -127,5 +127,12 @@ ok("Holt's vote is capped",
    model.estimate(mk(price=0.5), research_delta=0.02).q
    > model.estimate(mk(price=0.5)).q)
 
+# --- json export -----------------------------------------------------------
+from assay.render import decisions_json
+_dj = decisions_json(run(simulator.generate(6, 7), Book(), Limits()))
+ok("json export is a list of dicts with the expected keys",
+   isinstance(_dj, list) and len(_dj) > 0
+   and all(k in _dj[0] for k in ("question", "price", "estimate", "edge", "verdict", "stake")))
+
 print(f"\n  {PASS} passed, {FAIL} failed")
 raise SystemExit(1 if FAIL else 0)
